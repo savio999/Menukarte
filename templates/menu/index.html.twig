@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MenuController!{% endblock %}
+
+{% block body %}
+	{% for msg in app.flashes('success') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">            
+            {{msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>			
+	{% endfor %}
+    <section class="playlist-section spad">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h2>Dishes</h2>
+			</div>
+			<div class="container">
+			    {% if(categories|length > 0) %}
+					<ul class="playlist-filter controls">
+						{% for category in categories %}
+							<li class="control" data-filter=".{{category.name}}">{{category.name}}</li>
+						{% endfor %}
+						<li class="control" data-filter="all">All Dishes</li>
+					</ul>
+                {% endif %}
+			</div>                      
+			<div class="clearfix"></div>			
+			<div class="row playlist-area">
+				{% if(dishes|length > 0) %}
+					{% for dish in dishes %}
+						<div class="mix col-lg-3 col-md-4 col-sm-6 {{ dish.category }}">
+							<div class="playlist-item">
+								<img src="{{ asset('/uploads/images/' ~ dish.image) }}" alt="">
+								<h5>{{ dish.name|capitalize }} -  &#x20b9;{{dish.price}}</h5>
+								<p>Order no. {{dish.id}}</p>
+								<a type="button" class="btn btn-danger btn-sm" href="{{path('order_dish', {id: dish.id})}}">Order</a>
+							</div>
+						</div>
+					{% endfor %}
+				{% endif %}	
+			</div>
+		</div>
+	</section>
+{% endblock %}

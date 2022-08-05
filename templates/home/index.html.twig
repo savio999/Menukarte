@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+    <!-- Hero section -->
+    <section class="hero-section">
+        <div class="hero-slider owl-carousel">                  
+            <div class="hs-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hs-text">
+                                <h2><span>{{dish1.name|capitalize}}</span></h2>
+                                <a href="{{path('app_menu')}}" class="site-btn">Menu</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="hr-img">
+                                <img src="{{asset('uploads/images/'~dish1.image)}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hs-text">
+                                <h2><span>{{dish2.name|capitalize}}</span></h2>
+                                <a href="{{path('app_menu')}}" class="site-btn">Menu</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="hr-img">
+                                <img src="{{asset('uploads/images/'~dish2.image)}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero section end -->
+{% endblock %}
